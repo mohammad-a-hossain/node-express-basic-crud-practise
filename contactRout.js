@@ -1,19 +1,22 @@
+// PART-2
 
-const router =require('express').Router()
+const router = require('express').Router()
 
 const {
-    getAllUsers,
-    createUser,
-    getUsersById,
-    updateUserById,
-    deleteUser
+       getAllContacts,
+       getContactById,
+       createContacts,
+       updateContacts,
+       deleteContacts
 } = require('./controller')
 
-router.get('/',getAllUsers)
-router.post('/',createUser)
-router.get('/:id',getUsersById)
-router.put('/:id',updateUserById)
-router.delete('/:id',deleteUser)
+router.get('/', getAllContacts)
+router.post('/', createContacts)
+router.get('/:id', getContactById)
+router.put('/:id', updateContacts)
+router.delete('/:id',  deleteContacts)
+
+
 
 module.exports =router
 
@@ -22,26 +25,7 @@ module.exports =router
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//PART-1
 
 /* const router = require('express').Router()
 
