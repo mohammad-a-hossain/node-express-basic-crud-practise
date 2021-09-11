@@ -1,4 +1,54 @@
 
+// PART-2--
+const {Scheme, Schema, model} = require('mongoose')
+
+const contactSchema = new Schema({
+      name:{
+          type:String,
+          require:true,
+          trim:true,
+          minLength:3,
+          maxLength:15
+      },
+      email:{
+          type:String,
+          require:true,
+          trim:true
+      },
+      phone:{
+          type:String,
+          require:true,
+          trim:true,
+          maxLength:14,
+          minLength:11
+      }
+})
+// making model for contact schema
+const Contact = model('Contact',contactSchema)
+module.exports =Contact 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --PART-1--
+
+*/
 
 /* class Contacts {
     constructor() {

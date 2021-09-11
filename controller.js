@@ -1,50 +1,153 @@
+// PART -2
+// importing contacts from contact module
+const Contact = require('./Contacts')
 
-const users =require('./Users')
+exports.getAllContacts =(req,res)=>{
+  Contact.find()
+  .then(data =>{
+      res.json(data)
+  })
+  .catch(err =>{
+      res.json({
+          message:'error occurred in get dat'
+      })
+  })
 
-
-exports.getAllUsers=(req,res)=>{
-  res.json(users.getAllUsers())
 }
-
-exports.createUser = (req, res) => {
-    let { name,email, phone, dob } = req.body
-    let user = users.createUser({
-        name,
-        email,
-        phone,
-        dob
+exports.getContactById=(req,res)=>{
+    let {id} = req.params
+    Contact.findById(id)
+    .then(data =>{
+        res.json(data)
     })
-
-    res.json(user)
+    .catch(err =>{
+        res.json({
+            message:'error in update file'
+        })
+    })
 }
-
-
-exports.getUsersById =(req,res)=>{
+exports.createContacts=(req,res)=>{
+const {name, email,phone} = req.body
+const contact = new Contact({
+    name, email,phone
+})
+    contact.save()
+    .then(data =>{
+        res.json(data)
+    })
+    .catch(err =>{
+        //console.log(err)
+        res.json({
+            message:'error in create contact'
+        })
+    })
+}
+exports.updateContacts =(req,res)=>{
+    const {name,email,phone} =req.body
     let {id} =req.params
-     id =parseInt(id)
-       let user =users.getUsersById(id)
-       res.json(user)
+    Contact.findOneAndUpdate({
+        _id:id,
+    },{
+        $set:{
+            name,
+             email,
+             phone
+        }
+    },
+        {new:true})
+    .then(data =>{
+        res.json(data)
+    })
+    .catch(err =>{
+        res.json({
+            message:'error in updating'
+        })
+    })
+    
+}
+exports.deleteContacts =(req,res)=>{
+
+    let {id} = req.params
+    Contact.findOneAndDelete(id)
+    .then(data =>{
+        res.json(data)
+    })
+    .catch(err =>{
+        res.json({
+            message:'error in deleting'
+        })
+    })
 }
 
-exports.updateUserById =(req,res)=>{
-    let {id }= req.params 
-    id = parseInt(id)
-   let {name, email,phone,dob} =req.body 
-   let user =users.updateUserById(id,{
-       name,
-       email,
-       phone,
-       dob
-   })
-   res.json(user)
 
-}
-exports.deleteUser =(req,res)=>{
-    let {id} = req.params 
-    id =parseInt(id)
-    let user = users.deleteUser(id)
-    res.json(user)
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// part -1
+
+// const users =require('./Users')
+
+
+// exports.getAllUsers=(req,res)=>{
+//   res.json(users.getAllUsers())
+// }
+
+// exports.createUser = (req, res) => {
+//     let { name,email, phone, dob } = req.body
+//     let user = users.createUser({
+//         name,
+//         email,
+//         phone,
+//         dob
+//     })
+
+//     res.json(user)
+// }
+
+
+// exports.getUsersById =(req,res)=>{
+//     let {id} =req.params
+//      id =parseInt(id)
+//        let user =users.getUsersById(id)
+//        res.json(user)
+// }
+
+// exports.updateUserById =(req,res)=>{
+//     let {id }= req.params 
+//     id = parseInt(id)
+//    let {name, email,phone,dob} =req.body 
+//    let user =users.updateUserById(id,{
+//        name,
+//        email,
+//        phone,
+//        dob
+//    })
+//    res.json(user)
+
+// }
+// exports.deleteUser =(req,res)=>{
+//     let {id} = req.params 
+//     id =parseInt(id)
+//     let user = users.deleteUser(id)
+//     res.json(user)
+// }
 
 
 
