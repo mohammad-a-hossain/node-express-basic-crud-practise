@@ -1,19 +1,8 @@
 // using database mongoose PART- 2
-
-
-<<<<<<< HEAD
-=======
 const express =require('express')
 const morgan =require('morgan')
 const mongoose = require('mongoose')
 const router =require('./contactRout')
->>>>>>> 03bb26519793ac31de7013bf9e1f33e40f0a64bc
-
-
-
-<<<<<<< HEAD
-
-=======
 app.use('/contacts',router)
 
 mongoose.connect('mongodb://localhost/stacks',{
@@ -31,7 +20,6 @@ app.get('*',(req,res)=>{
         message:"welcome to out site "
     })
 })
->>>>>>> 03bb26519793ac31de7013bf9e1f33e40f0a64bc
 
 
 
@@ -60,14 +48,14 @@ app.get('*',(req,res)=>{
 // const morgan =require('morgan')
 // const userRoute =require('./contactRout')
 
-<<<<<<< HEAD
+
 // const app =express()
 
 // app.use(morgan('dev'))
 // app.use(express.urlencoded({extended:true}))
 // app.use(express.json())
 
-=======
+
 // const { urlencoded } = require('express')
 // const express =require('express')
 // const morgan =require('morgan')
@@ -79,7 +67,7 @@ app.get('*',(req,res)=>{
 // app.use(express.urlencoded({extended:true}))
 // app.use(express.json())
 
->>>>>>> 03bb26519793ac31de7013bf9e1f33e40f0a64bc
+
 // app.use('/users',userRoute)
 
 // app.get('*',(req,res)=>{
@@ -90,6 +78,11 @@ app.get('*',(req,res)=>{
 // app.listen(PORT,()=>{
 // console.log(`the app in running on port ${PORT}`)
 // })
+
+
+
+
+
 
 
 
